@@ -1,0 +1,53 @@
+shell> mysql -h host -u user -p menagerie
+Enter password: ********
+
+
+mysql> SHOW TABLES;
+Empty set (0.00 sec)
+
+
+mysql> CREATE TABLE pet (name VARCHAR(20), owner VARCHAR(20),
+    -> species VARCHAR(20), sex CHAR(1), birth DATE, death DATE);
+
+
+mysql> DESCRIBE table_name;
+
+mysql> INSERT INTO table_name;
+    -> VALUES ('Puffball','Diane','hamster','f','1999-03-30',NULL);
+
+mysql> SELECT * FROM pet;
+
+mysql> SELECT * FROM pet WHERE name = 'Puffball';
+
+mysql> SELECT name, birth FROM pet;
+
+mysql> SELECT name, birth FROM pet ORDER BY birth DESC;
+
+SELECT what_to_select
+FROM which_table
+WHERE conditions_to_satisfy;
+
+To find names beginning with “b” and ending with fy.
+mysql> SELECT * FROM pet WHERE name LIKE 'b%';
+mysql> SELECT * FROM pet WHERE name LIKE '%fy';
+mysql> SELECT * FROM pet WHERE name LIKE '%w%';
+mysql> SELECT * FROM pet WHERE name LIKE '_____'; containing exactly five characters
+
+
+calculation : 
+mysql> SELECT name, birth, CURDATE(),
+    -> (YEAR(CURDATE())-YEAR(birth))
+    -> - (RIGHT(CURDATE(),5)<RIGHT(birth,5))
+    -> AS age
+    -> FROM pet;
+
+
+
+1.mysql> CREATE DATABASE ''databasename''; 
+3.mysql> GRANT ALL PRIVILEGES ON ''databasename''.* TO "''username''"@"''hostname''" IDENTIFIED BY "''password''";
+5.mysql> FLUSH PRIVILEGES;
+7.mysql> EXIT
+
+
+
+
